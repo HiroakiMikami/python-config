@@ -9,14 +9,6 @@ def parse(code: str) -> Dict:
     tree = ast.parse(code)
     assert isinstance(tree, ast.Module)
 
-    lines = list(code.split("\n"))
-
-    def get_original_code(value: ast.expr) -> str:
-        ls = list(lines[value.lineno - 1: value.end_lineno])
-        ls[0] = ls[0][value.col_offset:]
-        ls[-1] = ls[-1][:value.end_col_offset]
-        return "\n".join(ls)
-
     def unsupported(value, msg):
         return RuntimeError(f"Unsupported AST ({ast.dump(value)}): {msg}")
 
