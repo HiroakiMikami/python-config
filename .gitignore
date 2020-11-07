@@ -1,0 +1,9 @@
+*
+!*/
+!/.gitignore
+!/LICENSE
+!/setup.py
+!/bin/*.bash
+!/.github/**/*.yml
+!/python_config/**/*.py
+!/test/**/*.py
