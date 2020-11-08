@@ -11,6 +11,7 @@ def test_constant():
     assert parse("x = ...") == {"x": Ellipsis}
     assert parse("x = \"\"\"\nfoobar\n\"\"\"") == {"x": "\nfoobar\n"}
     assert parse("x = (\"foo\"\n     \"bar\")") == {"x": "foobar"}
+    assert parse("x = -10") == {"x": -10}
 
 
 def test_reference():

@@ -11,7 +11,7 @@ def convert(config: Dict) -> str:
             for key, value in value.items():
                 if key == "type":
                     continue
-                out += f"{key}={convert_expr(value)}"
+                out += f"{key}={convert_expr(value)},"
             out += ")"
             return out
         elif isinstance(value, str) and value.startswith("@/"):
