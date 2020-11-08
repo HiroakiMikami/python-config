@@ -25,7 +25,6 @@ def parse(code: str) -> Dict:
                           "reference should be Name, BinOp, or Attribute")
 
     def parse_expr(expr: ast.expr) -> Any:
-        print(ast.dump(expr))
         if isinstance(expr, ast.Constant):
             return expr.value
         elif isinstance(expr, ast.Num):
@@ -63,6 +62,9 @@ def parse(code: str) -> Dict:
                 for key, value in zip(expr.keys, expr.values)
                 if key is not None
             }
+        elif isinstance(expr, ast.UnaryOp):
+            assert isinstance(expr.op, ast.USub)
+            return - parse_expr(expr.operand)
         raise unsupported(expr, "expr should be Constant, Name, or Attribute")
 
     def parse_stmt(stmt: ast.stmt) -> Tuple[str, Any]:
