@@ -10,5 +10,5 @@ def test_convert():
     }) == """x = 1
 y = ['str']
 z = {'key': 'value'}
-f = func(arg0='arg0')
+f = func(arg0='arg0',)
 """
